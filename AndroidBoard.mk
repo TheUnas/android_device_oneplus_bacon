@@ -15,8 +15,8 @@ LOCAL_PATH := $(call my-dir)
 # limitations under the License.
 #
 
-KERNEL_DEFCONFIG := cyanogenmod_bacon_defconfig
-KERNEL_DIR := kernel/oneplus/msm8974
+KERNEL_DEFCONFIG := ak_bacon_defconfig
+KERNEL_DIR := kernel
 
 -include $(TOP)/$(KERNEL_DIR)/AndroidKernel.mk
 
