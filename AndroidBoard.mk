@@ -1,5 +1,5 @@
 LOCAL_PATH := $(call my-dir)
-# 
+#
 # Copyright (C) 2011 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,4 +25,3 @@ KERNEL_DIR := kernel
 .PHONY: $(PRODUCT_OUT)/kernel
 $(PRODUCT_OUT)/kernel: $(TARGET_PREBUILT_KERNEL)
         cp $(TARGET_PREBUILT_KERNEL) $(PRODUCT_OUT)/kernel
-
