@@ -24,4 +24,4 @@ KERNEL_DIR := kernel
 # So cp will do.
 .PHONY: $(PRODUCT_OUT)/kernel
 $(PRODUCT_OUT)/kernel: $(TARGET_PREBUILT_KERNEL)
-        cp $(TARGET_PREBUILT_KERNEL) $(PRODUCT_OUT)/kernel
+	cp $(TARGET_PREBUILT_KERNEL) $(PRODUCT_OUT)/kernel
