@@ -25,3 +25,8 @@ KERNEL_DIR := kernel
 .PHONY: $(PRODUCT_OUT)/kernel
 $(PRODUCT_OUT)/kernel: $(TARGET_PREBUILT_KERNEL)
 	cp $(TARGET_PREBUILT_KERNEL) $(PRODUCT_OUT)/kernel
+
+
+
+
+include build/core/generate_extra_images.mk
