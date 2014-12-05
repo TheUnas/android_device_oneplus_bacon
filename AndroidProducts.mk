@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/cm_bacon.mk
+    $(LOCAL_DIR)/cm.mk
