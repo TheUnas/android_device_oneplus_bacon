@@ -19,7 +19,7 @@
 
 # Kernel
 TARGET_KERNEL_CONFIG := ak_bacon_defconfig
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bacon user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/bacon/bluetooth
@@ -40,7 +40,6 @@ BOARD_USERDATAEXTRAIMAGE_PARTITION_NAME := 64G
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/oneplus/bacon/rootdir/etc/fstab.bacon
-RECOVERY_VARIANT := cm
 
 TARGET_OTA_ASSERT_DEVICE := bacon,A0001
 
@@ -54,6 +53,7 @@ BOARD_VOLD_CRYPTFS_MIGRATE := true
 BOARD_NFC_CHIPSET := pn547
 
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
+AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 
 # inherit from the proprietary version
 -include vendor/oneplus/bacon/BoardConfigVendor.mk
