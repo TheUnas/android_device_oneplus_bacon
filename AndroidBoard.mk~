@@ -15,4 +15,4 @@ LOCAL_PATH := $(call my-dir)
 # limitations under the License.
 #
 
-include device/oneplus/bacon/generate_extra_images.mk
+include build/core/generate_extra_images.mk
