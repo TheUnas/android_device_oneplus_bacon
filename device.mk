@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-# overlays
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay vendor/extra/overlays/phone-1080p
+DEVICE_PACKAGE_OVERLAYS := \
+    device/oneplus/bacon/overlay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -26,16 +26,18 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    libinit_bacon \
-    fstab.bacon \
-    init.bacon.rc \
-    init.qcom.usb.rc \
-    ueventd.bacon.rc
+    libinit_bacon
+
+PRODUCT_COPY_FILES += \
+    device/oneplus/bacon/rootdir/etc/fstab.bacon:root/init.shamu.rc \
+    device/oneplus/bacon/rootdir/etc/init.bacon.rc:root/init.bacon.rc \
+    device/oneplus/bacon/rootdir/etc/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    device/oppo/msm8974-common/rootdir/etc/ueventd.qcom.rc:root/ueventd.bacon.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/oneplus/bacon/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/oneplus/bacon/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -49,8 +51,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+    device/oneplus/bacon/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    device/oneplus/bacon/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -61,9 +63,9 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # call dalvik heap config
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
-# call hwui memory config
+# call hwui memory config TODO
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # call the proprietary setup
