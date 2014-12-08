@@ -15,4 +15,15 @@ LOCAL_PATH := $(call my-dir)
 # limitations under the License.
 #
 
-include device/oneplus/bacon/generate_extra_images.mk
+KERNEL_DEFCONFIG := cyanogenmod_bacon_defconfig
+KERNEL_DIR := kernel/oneplus/msm8974
+include $(TOP)/$(KERNEL_DIR)/AndroidKernel.mk
+
+# device.mk doesn't know about us, and we can't PRODUCT_COPY_FILES here.
+# So cp will do.
+.PHONY: $(PRODUCT_OUT)/kernel
+$(PRODUCT_OUT)/kernel: $(TARGET_PREBUILT_KERNEL)
+	cp $(TARGET_PREBUILT_KERNEL) $(PRODUCT_OUT)/kernel
+
+cp $(TOP)/device/oneplus/bacon/generate_extra_images.mk $(TOP)/build/core/generate_extra_images.mk
+-include build/core/generate_extra_images.mk
